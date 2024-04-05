@@ -19,13 +19,13 @@ def reverse(text: str) -> str:
        return reverse(text[1:]) + text[0]
 
 
-def is_palindrome(str: str) -> bool:
+def is_palindrome(string: str) -> bool:
     """
     Takes in an input string and checks whether it is a valid palindrome.
 
     Parameter
     ---------
-    str: str
+    string: str
 
     Returns
     -------
@@ -34,15 +34,16 @@ def is_palindrome(str: str) -> bool:
         False - if str is an invalid palindrome
     """
     #strip white spaces and punctuation
-    str = str.strip().strip('!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~')
+    string = string.strip(' !"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~')
+    #ensure case insesitivity
+    string = string.upper()
     #base case
-    if (len(str) == 0) or (len(str) == 1):
+    if (len(string) == 0) or (len(string) == 1):
         return True
         
     else:
-      if str[0] == str[-1]:
-        str = str.strip(str[0]).strip(str[-1])
-        return is_palindrome(str)
+      if string[0] == string[-1]:
+        return is_palindrome(string[1:-1])
           
       else:
         return False
